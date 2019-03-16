@@ -1,0 +1,51 @@
+import { Divider, Button, Icon } from 'semantic-ui-react';
+
+
+const Featured = (props) => (
+
+
+    <div style={{
+      position: "relative", 
+      textAlign: "center", 
+      height: `${props.height}vh`, 
+      width: "100vw", 
+      marginTop: `${props.padding}vh`, 
+      paddingTop: "10vh", 
+      opacity: ".99", 
+      zIndex: "1", 
+      background: "linear-gradient(rgba(255,255,255,0.45),rgba(255,255,255,0.45)), url(../static/tearfence.jpeg)", 
+      backgroundSize: "cover"}}>
+
+        <div style={{position: "relative", zIndex: "7"}}>
+        
+            <h1 style={{fontSize: "3em", marginTop: "10vh"}}>Featured</h1>
+
+            <a onClick={() => props.playFeatured()}
+                style={{color: "#000", cursor: "pointer"}}>
+            <Icon name="play circle" size="massive" />
+            </a>
+
+            <h2>
+                {props.song.title} | 135 BPM | 
+                <a onClick={() => {props.addToCart(props.song)}} style={{cursor: "pointer", color: "black"}} >  
+                    <strong style={{fontColor: "black", textDecoration: "underline"}}>Add To Cart</strong>
+                </a>  
+            </h2>
+
+            <Divider hidden padded="true" />
+
+            <a onClick={props.beatsView} style={{cursor: "pointer"}}>
+                <Button color="black" size="large" >
+                    Browse all tracks
+                </Button>
+            </a>
+        </div>
+        
+
+    </div>
+
+
+)
+
+
+export default Featured;

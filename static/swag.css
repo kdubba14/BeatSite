@@ -1,0 +1,4 @@
+.link:hover{
+    border: .2em solid rgba(100,100,190,0.0);
+    border-radius: 12px
+}

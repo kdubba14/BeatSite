@@ -1,0 +1,11 @@
+node_modules
+
+config
+
+.next
+
+localStorage
+
+package-lock.json
+
+now.json
