@@ -73,14 +73,14 @@ app.prepare().then(() => {
 
       let body = JSON.stringify({ 
         tags: [ 'test' ],
-        sender: { email: 'swaghettiweb@gmail.com' },
+        sender: { email: keys.swagEmail },
         htmlContent: outputHtml,
         subject: 'NEW CONTACT REQUEST',
         replyTo: { 
           email: req.body.email, 
           name: req.body.name },
         to: [ { 
-          email: 'swagmadeit@gmail.com', 
+          email: keys.swagEmail, 
           name: 'Kyle' } ] 
       })
 
@@ -136,14 +136,14 @@ app.prepare().then(() => {
 
       let body = JSON.stringify({ 
         tags: [ 'test' ],
-        sender: { email: 'swaghettiweb@gmail.com' },
+        sender: { email: keys.siteEmail },
         htmlContent: outputHtml,
         subject: 'NEW ORDER: SEND BEAT!',
         replyTo: { 
           email: req.body.stripeToken.email,  
           name: "Artist" },
         to: [ { 
-          email: 'swagmadeit@gmail.com', 
+          email: keys.swagEmail, 
           name: 'Trevor' } ] 
       })
 
