@@ -97,7 +97,7 @@ app.prepare().then(() => {
       const items = req.body.cart;
     
       const desc = items.map((item) => {
-        return (` | ${item.song.title} w/ ${item.type.name} | `)
+        return (` | ${item.song.title} w/ ${item.type.name} License | `)
       })
     
       stripe.customers.create({
@@ -111,6 +111,45 @@ app.prepare().then(() => {
         customer: customer.id, 
       }))
       .then((charge) => {console.log('success!')});
+
+      
+      
+      const outputHtml = `
+        <p>You have a new order on your site!</p>
+        <h2>Contact & Beat Details</h3>
+        <h4>Email: ${req.body.stripeToken.email}</h4>
+        <h4>Beats w/ Licenses:</h4>
+        <p>${desc}</p>
+        </ul>
+        
+      `;
+
+
+      let url = "https://api.sendinblue.com/v3/smtp/email";
+
+      let mailOptions = {
+        "headers": {
+          "Content-Type": "application/json",
+          "api-key": keys.contactKey
+        }
+      }
+
+      let body = JSON.stringify({ 
+        tags: [ 'test' ],
+        sender: { email: 'swaghettiweb@gmail.com' },
+        htmlContent: outputHtml,
+        subject: 'NEW ORDER: SEND BEAT!',
+        replyTo: { 
+          email: req.body.stripeToken.email,  
+          name: "Artist" },
+        to: [ { 
+          email: 'swagmadeit@gmail.com', 
+          name: 'Trevor' } ] 
+      })
+
+      axios.post(url, body, mailOptions)
+        .then(response => console.log("Message sent! "))
+        .catch(err => console.log(err.message))
       
       
       

@@ -1,5 +1,5 @@
 
-import {Image, Form, Container, Icon, Responsive, Message} from 'semantic-ui-react';
+import {Image, Form, Container, Icon, Message} from 'semantic-ui-react';
 import axios from 'axios';
 
 
@@ -90,17 +90,7 @@ class Footer extends React.Component {
     return (
     <React.Fragment>
         
-        <Responsive as="footer" minWidth={767}
-
-             style={{
-                height: "85vh", 
-                width: "100%", 
-                textAlign: "center",  
-                padding: "0", 
-                margin: "0", 
-                border: "0", 
-                position: "static", 
-                top: "185vh"}}>
+        <div id="web-footer">
 
                 <div style={{width: "100%", height: "100%"}}>
 
@@ -155,18 +145,9 @@ class Footer extends React.Component {
 
                 </div>
 
-        </Responsive>
+        </div>
 
-        <Responsive as="div" maxWidth={766}
-
-             style={{
-                height: "100vh", 
-                width: "100vh", 
-                textAlign: "center",   
-                padding: "0", 
-                margin: "0", 
-                border: "0", 
-                position: "static"}}>
+        <div id="mobile-footer" >
 
                 
                 <div style={{height: "100vh", width: "100vw", backgroundImage: "url('../static/black-grass-footer.png')", backgroundSize: "cover"}}>
@@ -178,7 +159,7 @@ class Footer extends React.Component {
                                                                                                     height: "100vh",  
                                                                                                     padding: "0 8vw"}}>
                         
-                        <h1>Contact</h1>
+                        <h1 style={{paddingTop: "2vh"}}>Contact</h1>
                         
                     {messageSuccess(this.state.messageSent)}
 
@@ -224,7 +205,7 @@ class Footer extends React.Component {
                 
 
 
-        </Responsive>
+        </div>
 
     </React.Fragment>
 )

@@ -75,7 +75,7 @@ class index extends React.Component {
         newState.song = song;
         newState.pop = true;
         newState.popupType = "addToCart";
-        this.setState(newState);
+        this.setState(newState,() => console.log(JSON.stringify(this.state.cart)));
     }
 
     _adding = (song, type) => {
@@ -171,14 +171,14 @@ class index extends React.Component {
             if (this.state.view === "home") {
                 return(
                     <React.Fragment>
-                        <Featured playFeatured={this._playFeatured} beatsView={this._beatsView} addToCart={this._addToCart} song={this.state.featuredBeat} height={height} padding={100-height} />
+                        <Featured id="featured" playFeatured={this._playFeatured} beatsView={this._beatsView} addToCart={this._addToCart} song={this.state.featuredBeat} height={height} padding={100-height} />
                         
                     </React.Fragment>
                 )
             }
             if (this.state.view === "beats") {
                 return(
-                    <BeatsBackground height={height} padding={100-height} state={this.state} playSong={this._handlePlaySong} version="mobile" addToCart={this._addToCart} /> 
+                    <BeatsBackground id="beats" height={height} padding={100-height} state={this.state} playSong={this._handlePlaySong} version="mobile" addToCart={this._addToCart} /> 
                 )
             }
         }
@@ -188,7 +188,7 @@ class index extends React.Component {
             
             <Layout beatsView={this._beatsView} homeView={this._homeView} showCart={this._showCart}>
 
-                <Responsive as="div" minWidth={767} style={{position: "relative", zIndex: "1"}}> 
+                <div id="full" style={{position: "relative", zIndex: "1"}}> 
                                 
                     <Popup 
                         pop={this.state.pop} 
@@ -209,16 +209,43 @@ class index extends React.Component {
                     {showView(85)}
                     
                     <Licenses 
+                        license="web-licenses"
                             showLeaseLicense={this._showLeaseLicense} 
                             showExclusiveLicense={this._showExclusiveLicense} 
                             row="3" 
-                            width="0" 
-                            height="100vh" 
+                            width="0"  
                             topmarg="22.5vh" />
-                        
-                </Responsive>
 
-                <Responsive as="div" maxWidth={766} style={{position: "static"}}>
+                    <Licenses 
+                        license="mobile-licenses"
+                            showLeaseLicense={this._showLeaseLicense} 
+                            showExclusiveLicense={this._showExclusiveLicense} 
+                            row="1" 
+                            width="0 10vw" 
+                            topmarg="5vh" /> 
+                        
+                </div>
+
+                
+
+                
+                {playSong()}
+                    
+
+                
+
+            </Layout>
+        
+        )
+    }
+}
+
+export default index;
+
+
+/* 
+
+<div style={{position: "static"}}>
 
                     <Popup 
                         pop={this.state.pop} 
@@ -242,18 +269,6 @@ class index extends React.Component {
                                         
                     <Licenses showLeaseLicense={this._showLeaseLicense} showExclusiveLicense={this._showExclusiveLicense} row="1" width="0 10vw" height="180vh" topmarg="5vh" />                           
                                     
-                </Responsive>
+                </div>
 
-                
-                {playSong()}
-                    
-
-                
-
-            </Layout>
-        
-        )
-    }
-}
-
-export default index;
+*/

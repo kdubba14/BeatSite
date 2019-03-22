@@ -1,4 +1,151 @@
-.link:hover{
-    border: .2em solid rgba(100,100,190,0.0);
-    border-radius: 12px
+@media screen and (max-width: 766px) {
+    #featured {
+      position: relative;
+      text-align: center; 
+      height: 90vh; 
+      width: 100vw; 
+      margin-top: 10vh; 
+      padding-top: 10vh;
+      opacity: .99; 
+      z-index: 1; 
+      background: 
+        linear-gradient(
+        rgba(214,214,214,0.45),
+        rgba(214,214,214,0.45)), 
+        url(../static/tearfence.jpeg);
+      background-size: cover; 
+      background-position: center;
+    }
+
+    #mobile-licenses {
+        position: relative; 
+        color: black; 
+        text-align: center; 
+        height: auto; 
+        width: 100%;  
+        padding: 1vh 0; 
+        bottom: 0; 
+        left: 0; 
+        right: 0; 
+        background-color: rgba(193,225,238,.8); 
+        box-shadow: 0vw -.5vw 1em -.2em black;; 
+        z-index: 2;
+    }
+
+    #web-licenses {
+        display: none;
+    }
+
+    #beats {
+      position: relative;
+      text-align: center; 
+      height: 90vh; 
+      width: 100vw; 
+      margin-top: 10vh; 
+      padding-top: 10vh;
+      opacity: .99; 
+      z-index: 1; 
+      background: 
+        linear-gradient(
+        rgba(214,214,214,0.45),
+        rgba(214,214,214,0.45)), 
+        url(../static/tearfence.jpeg);
+      background-size: cover; 
+      background-position: center;
+    }
+
+    .web-header {
+        display: none;
+    }
+
+    #mobile-footer {
+      height: 100vh; 
+      width: 100vh; 
+      text-align: center;   
+      padding: 0; 
+      margin: 0; 
+      border: 0; 
+      position: static;
+    }
+
+    #web-footer {
+      display: none;
+    }
 }
+
+@media screen and (min-width: 767px) {
+    #featured {
+      position: relative;
+      text-align: center; 
+      height: 85vh; 
+      width: 100vw; 
+      margin-top: 15vh; 
+      padding-top: 10vh;
+      opacity: .99; 
+      z-index: 1; 
+      background: 
+        linear-gradient(
+        rgba(214,214,214,0.45),
+        rgba(214,214,214,0.45)), 
+        url(../static/tearfence.jpeg);
+      background-size: cover; 
+      background-position: center;
+    }
+
+    #web-licenses {
+        position: relative; 
+        color: black; 
+        text-align: center; 
+        height: 100vh; 
+        width: 100%;  
+        padding-top: 1vh; 
+        bottom: 0; 
+        left: 0; 
+        right: 0; 
+        background-color: rgba(193,225,238,.8); 
+        box-shadow: 0vw -.5vw 1em -.2em black;; 
+        z-index: 2;
+    }
+
+    #mobile-licenses {
+        display: none;
+    }
+
+    #beats {
+      position: relative;
+      text-align: center; 
+      height: 85vh; 
+      width: 100vw; 
+      margin-top: 15vh; 
+      padding-top: 10vh;
+      opacity: .99; 
+      z-index: 1; 
+      background: 
+        linear-gradient(
+        rgba(214, 214, 214,0.45),
+        rgba(214, 214, 214, 0.45)), 
+        url(../static/tearfence.jpeg);
+      background-size: cover; 
+      background-position: center;
+    }
+    
+    #mobile-header {
+        display: none;
+    }
+
+    #web-footer {
+      height: 85vh; 
+      width: 100%; 
+      text-align: center;  
+      padding: 0; 
+      margin: 0; 
+      border: 0; 
+      position: static; 
+      top: 185vh;
+    }
+
+    #mobile-footer {
+      display: none;
+    }
+}
+

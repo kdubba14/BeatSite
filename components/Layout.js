@@ -15,8 +15,9 @@ const foot = (noFoot) => {
 const Layout = (props) => (
     <div style={{position: "absolute", top: "0", height: "100%", width: "100%"}}>
         <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta charSet="utf-8" />
+            <link rel="stylesheet" href="../static/swag.css" />
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"/>
 
             <title>Swaghetti Beats</title>

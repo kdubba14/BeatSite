@@ -1,5 +1,5 @@
 
-import { Container, Icon, Responsive, Button, Image} from 'semantic-ui-react';
+import { Container, Icon, Image} from 'semantic-ui-react';
 
 
 
@@ -10,8 +10,8 @@ const Header = (props) => (
 
                 
                 
-        <Responsive as="header" 
-                    minWidth={767} 
+        <div 
+                    className="web-header" 
                     style={{
                         position: "absolute", 
                         backgroundColor: "rgba(193,225,238,.8)", 
@@ -19,7 +19,7 @@ const Header = (props) => (
                         width: "100vw", 
                         height: "15vh", 
                         top: "0vh", 
-                        zIndex: "2"
+                        zIndex: "3"
                     }} >
         
             <Container 
@@ -35,7 +35,7 @@ const Header = (props) => (
                                 right: "0", 
                                 zIndex: "5"}}>
 
-                <Responsive as="a" 
+                <a 
                         className="link" 
                         minWidth={767} 
                         onClick={props.beatsView} 
@@ -43,7 +43,7 @@ const Header = (props) => (
                             display: "inline-block", 
                             float: "left", 
                             position: "relative", 
-                            zIndex: "7", 
+                            zIndex: "9", 
                             color: "#000", 
                             padding: "0", 
                             margin: "0", 
@@ -61,15 +61,15 @@ const Header = (props) => (
                                 textAlign: "left", 
                                 position: "relative", 
                                 top: "2vh"}} />
-                </Responsive>
-                <Responsive as="a" 
+                </a>
+                <a  
                         className="link" 
                         minWidth={767} 
                         onClick={props.showCart} 
                         style={{display: "inline-block", 
                             float: "right", 
                             position: "relative", 
-                            zIndex: "7",  
+                            zIndex: "9",  
                             color: "#000", 
                             padding: "0", 
                             margin: "0", 
@@ -79,8 +79,7 @@ const Header = (props) => (
                             border: ".2em solid rgba(250,250,255,0.0)", 
                             borderRadius: "12px", 
                             cursor: "pointer"}}>
-                    <Responsive as={Icon} 
-                        minWidth={767} 
+                    <Icon 
                         fitted 
                         name="cart" 
                         size="huge" 
@@ -88,23 +87,16 @@ const Header = (props) => (
                                 textAlign: "right", 
                                 position: "relative", 
                                 top: "2vh"}} />
-                </Responsive>
-
-
-
-
-                
-
-
+                </a>
 
 
             </Container>
-        </Responsive>
+        </div>
 
         {/*the logo*/}
-        <Responsive as="a" 
+        <a 
+                    className="web-header"
                     onClick={props.homeView} 
-                    minWidth={767} 
                     style={{
                         width: "28vw", 
                         height: "16vh", 
@@ -116,8 +108,7 @@ const Header = (props) => (
                         cursor: "pointer"}} 
                     onClick={props.homeView}>       
                     
-                    <Responsive as={Image} 
-                        minWidth={767} 
+                    <Image 
                         centered 
                         src='../static/swagtemplogo.png' 
                         size="medium" 
@@ -125,12 +116,12 @@ const Header = (props) => (
                             height: "100%"
                             }} />
             
-                </Responsive>
+                </a>
         
                 
 
-        <Responsive as="header2" 
-                    maxWidth={766} 
+        <div 
+                    id="mobile-header" 
                     style={{
                         position: "absolute",
                         top: "0",
@@ -144,15 +135,14 @@ const Header = (props) => (
                         zIndex: "9"}} 
                     >
         
-            <Container 
-                        maxWidth={766} 
+            <Container  
                         style={{padding: "0 5vw", 
                                 height: "100%", 
                                 width: "100%", 
                                 textAlign: "center", 
                                 position: "relative"}}>            
                 
-                <Responsive as="a" onClick={props.homeView} maxWidth={766} style={{cursor: "pointer"}}>
+                <a onClick={props.homeView} style={{cursor: "pointer"}}>
                         <Image  
                                 centered 
                                 src='../static/swagtemplogo.png' 
@@ -162,28 +152,28 @@ const Header = (props) => (
                                     height: "10vh", 
                                     width: "36vw", 
                                     bottom: "0vh"}} />
-                </Responsive>
+                </a>
                 
-                <Responsive as="a" onClick={props.beatsView}  maxWidth={766} style={{color: "#000", height: "5vh", width: "5vw", cursor: "pointer"}}>
+                <a onClick={props.beatsView}  style={{color: "#000", height: "5vh", width: "5vw", cursor: "pointer"}}>
                     <Icon  
                         name="music" 
                         size="big" 
                         fitted
                         style={{float: "right", position: "relative", top: "2.5vh", right: "18vw"}} 
                         />
-                </Responsive>
+                </a>
                 
-                <Responsive as="a" onClick={props.showCart} maxWidth={766} style={{color: "#000", cursor: "pointer"}}>
+                <a onClick={props.showCart}  style={{color: "#000", cursor: "pointer"}}>
                     <Icon  
                         name="shopping cart" 
                         size="big" 
                         fitted
                         style={{float: "right", position: "relative", top: "2.5vh", left: "2vw"}} 
                         />
-                </Responsive>
+                </a>
             </Container>
         
-        </Responsive>        
+        </div>        
 
     </React.Fragment>
         

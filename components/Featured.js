@@ -4,17 +4,7 @@ import { Divider, Button, Icon } from 'semantic-ui-react';
 const Featured = (props) => (
 
 
-    <div style={{
-      position: "relative", 
-      textAlign: "center", 
-      height: `${props.height}vh`, 
-      width: "100vw", 
-      marginTop: `${props.padding}vh`, 
-      paddingTop: "10vh", 
-      opacity: ".99", 
-      zIndex: "1", 
-      background: "linear-gradient(rgba(255,255,255,0.45),rgba(255,255,255,0.45)), url(../static/tearfence.jpeg)", 
-      backgroundSize: "cover"}}>
+    <div id="featured">
 
         <div style={{position: "relative", zIndex: "7"}}>
         

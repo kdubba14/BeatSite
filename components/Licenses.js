@@ -54,19 +54,7 @@ const licenseType = (props, type) => {
 const Licenses = (props) => (
 
 
-  <div style={{
-    position: "relative", 
-    color: "black", 
-    textAlign: "center", 
-    height: props.height, 
-    width: "100%",  
-    paddingTop: "1vh", 
-    bottom: "0", 
-    left: "0", 
-    right: "0", 
-    backgroundColor: "rgba(193,225,238,.8)", 
-    boxShadow: "0vw -.5vw 1em -.2em black", 
-    zIndex: "2"}} >
+  <div id={props.license} >
     
       <Container style={{padding: props.width}}>
           <Card.Group centered stackable itemsPerRow={props.row} style={{marginTop: props.topmarg}} >
