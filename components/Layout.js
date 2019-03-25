@@ -23,11 +23,9 @@ const Layout = (props) => (
             <title>Swaghetti Beats</title>
             
         </Head>
-        <Header className="header" homeView={props.homeView} beatsView={props.beatsView} showCart={props.showCart} />
-
+        <Header className="header" homeView={props.homeView} beatsView={props.beatsView} cart={props.cart} showCart={props.showCart} cartPopup={props.cartPopup} />
         
             {props.children}
-        
         
         {foot(props.noFoot)}
         
@@ -35,6 +33,5 @@ const Layout = (props) => (
     </div>
 )
 
-// 
 
 export default Layout;

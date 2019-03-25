@@ -1,4 +1,4 @@
-import { Container, Card, Divider, Button } from 'semantic-ui-react';
+import { Container, Card, Divider } from 'semantic-ui-react';
 
 import EachLicense from './EachLicense';
 
@@ -29,8 +29,10 @@ const licenseType = (props, type) => {
 
     if (type === "exclusive") {
       return (
-        <button onClick={props.showExclusiveLicense}  
-                style={buttonStyle} >
+        <button 
+          name="exclusive" 
+          onClick={props.exclusivePopup}  
+          style={buttonStyle} >
             
             <strong>Read Full License</strong>
         
@@ -39,15 +41,16 @@ const licenseType = (props, type) => {
     }
     else {
       return (
-        <button onClick={props.showLeaseLicense} 
-                style={buttonStyle} >
+        <button 
+          name="lease" 
+          onClick={props.leasePopup} 
+          style={buttonStyle} >
             
             <strong>Read Full License</strong>
         
         </button>
       )
     }
-    console.log(type);
 
 }
 

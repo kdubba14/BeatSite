@@ -1,7 +1,26 @@
+import {connect} from 'react-redux';
+import {
+  removeFromCart, 
+  purchaseCart
+} from '../reduxCategories/cart/cartActions';
 
-import axios from 'axios';
 import keys from '../config/keys';
 
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cartReducers.cart, 
+    totalPrice: state.cartReducers.totalPrice, 
+    loading: state.cartReducers.loading, 
+    success: state.cartReducers.success
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    _purchaseCart: (token) => dispatch(purchaseCart(token)), 
+    _removeItem: (index) => dispatch(removeFromCart(index))
+  }
+}
 
 class Cart extends React.Component { 
   
@@ -38,15 +57,7 @@ class Cart extends React.Component {
               key: keys.public,
               image: '../static/marketplace.png',
               locale: 'auto',
-              token: (token) => {
-                  this.setState({ loading: true });
-                  // use fetch or some other AJAX library here if you dont want to use axios
-                  axios.post('/api/order', {
-                      stripeToken: token, 
-                      totPrice: this.props.totalPrice()*100, 
-                      cart: this.props.cart
-                  }).then(this.props.success())
-              }
+              token: (token) => (this.props._purchaseCart(token))
           });
       });
   }
@@ -59,6 +70,7 @@ class Cart extends React.Component {
           })
       }
   }
+
 
   onStripeUpdate(e) {
       this.stripeHandler.open({
@@ -95,7 +107,7 @@ class Cart extends React.Component {
                     </span>
                     
                     <span 
-                        onClick={() => {this.props.removeItem(index)}} 
+                        onClick={() => {this.props._removeItem(index)}} 
                         style={{
                             float: "right", 
                             height: "100%", 
@@ -131,7 +143,7 @@ class Cart extends React.Component {
 
           <span style={{float: "right"}}>
             <h3>
-              ${this.props.totalPrice()}.00
+              {`${this.props.totalPrice}.00`}
             </h3>
           </span>
       
@@ -151,7 +163,7 @@ class Cart extends React.Component {
             backgroundColor: "rgba(193,225,238,.8)", 
             border: ".3vh solid rgb(49, 143, 180)"}}>
         
-        <h3>Pay ${this.props.totalPrice()}.00</h3>
+        <h3>Pay ${this.props.totalPrice}.00</h3>
       
       </button>
       
@@ -165,10 +177,5 @@ class Cart extends React.Component {
 }
 }
 
-/*
 
-
-
-*/
-
-export default Cart;
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -25,11 +25,6 @@ app.prepare().then(() => {
     server.use(bodyParser.urlencoded({extended: false}))
     server.use(bodyParser.json())
 
-    //const routes = require('./routes/index.js');
-    
-    
-
-    
 
     server.get('/login/:id', (req, res) => {
       res.send('we started kinda')
@@ -57,10 +52,6 @@ app.prepare().then(() => {
         <p>${req.body.message}</p>
       `;
 
-      const outputPlain = `
-        Contact Request Details......Name: ${req.body.name}......Email: ${req.body.email}......Subject: ${req.body.subject}......Message: ${req.body.message}
-      `
-
       let url = "https://api.sendinblue.com/v3/smtp/email";
       
 
@@ -73,7 +64,7 @@ app.prepare().then(() => {
 
       let body = JSON.stringify({ 
         tags: [ 'test' ],
-        sender: { email: keys.swagEmail },
+        sender: { email: keys.siteEmail },
         htmlContent: outputHtml,
         subject: 'NEW CONTACT REQUEST',
         replyTo: { 
@@ -84,9 +75,13 @@ app.prepare().then(() => {
           name: 'Kyle' } ] 
       })
 
-      axios.post(url, body, mailOptions)
-        .then(response => console.log("Message sent: "+ JSON.stringify(response.data)))
-        .catch(err => console.log(err.message))
+      axios.post(url, body, mailOptions) 
+        .then(response => {
+          res.send(response.data)
+        })
+        .catch((err) => {
+          res.status(400).send(err.data)
+        })
       
     })
 
@@ -110,7 +105,8 @@ app.prepare().then(() => {
         currency: "USD", 
         customer: customer.id, 
       }))
-      .then((charge) => {console.log('success!')});
+      .then((charge) => {res.status(200).send(charge)})
+      .catch(err => {res.status(400).send(err)})
 
       
       
@@ -148,7 +144,7 @@ app.prepare().then(() => {
       })
 
       axios.post(url, body, mailOptions)
-        .then(response => console.log("Message sent! "))
+        .then(response => res.send("Message sent!" + response))
         .catch(err => console.log(err.message))
       
       

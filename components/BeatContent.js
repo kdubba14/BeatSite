@@ -17,8 +17,8 @@ const BeatContent = (props) => (
                             <strong>{song.title}</strong>
                         </List.Content>
                         <List.Content floated="right" verticalAlign="middle">
-                            <Button onClick={() => {props.addToCart(song)}} color="black">
-                                <Icon name="cart" size="medium" />
+                            <Button  onClick={() => {props.addToCart(song)}} color="black">
+                                <Icon callName="addToCart"name="cart" size="medium" />
                                 Add
                             </Button>
                         </List.Content>

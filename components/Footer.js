@@ -1,20 +1,39 @@
 
 import {Image, Form, Container, Icon, Message} from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import {changeMessage, sendMessage} from '../reduxCategories/contactForm/contactFormActions';
 import axios from 'axios';
 
+const mapStateToProps = (state) => {
+    return {
+        name: state.contactFormReducers.name, 
+        email: state.contactFormReducers.email, 
+        subject: state.contactFormReducers.subject, 
+        message: state.contactFormReducers.message, 
+        sending: state.contactFormReducers.sending, 
+        sent: state.contactFormReducers.sent, 
+        error: state.contactFormReducers.error
+    }
+}
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        _handleTyping: (e) => dispatch(changeMessage(e)), 
+        _handleSubmit: (e) => dispatch(sendMessage(e))
+    }
+}
 
 class Footer extends React.Component { 
     
     constructor(props){
         super(props);
-        this.state={
+        /*this.state={
             name: "", 
             email: "", 
             subject: "", 
             message: "", 
             messageSent: false
-        }
+        }*/
     }
 
     
@@ -50,7 +69,7 @@ class Footer extends React.Component {
     
 
         const messageSuccess = (sent) => {
-            if (sent){
+            /*if (sent){
                 return(
                     <Message success floating style={{padding: "17.5vh 0"}}>
                         <Message.Header>
@@ -61,29 +80,29 @@ class Footer extends React.Component {
                     </Message>
                 )
             }
-            else{
+            else{*/
                 return(
                     <Form >
                             
                             <Form.Group widths="equal" >
                                 
-                                <Form.Input name="name" onChange={this._handleTyping} fluid placeholder='Name' />
+                                <Form.Input name="name" onChange={this.props._handleTyping} fluid placeholder='Name' />
                                 
-                                <Form.Input name="email" onChange={this._handleTyping} fluid placeholder='Email' />
+                                <Form.Input name="email" onChange={this.props._handleTyping} fluid placeholder='Email' />
                             
                             </Form.Group>
                             
-                            <Form.Input name="subject" onChange={this._handleTyping} fluid placeholder="Subject" />
+                            <Form.Input name="subject" onChange={this.props._handleTyping} fluid placeholder="Subject" />
                             
-                            <Form.TextArea name="message" onChange={this._handleTyping} placeholder="Message" />
+                            <Form.TextArea name="message" onChange={this.props._handleTyping} placeholder="Message" />
                             
-                            <Form.Button color="black" type="submit" onClick={this._handleSubmit} >
+                            <Form.Button color="black" type="submit" onClick={this.props._handleSubmit} >
                                 Send Message
                             </Form.Button>
                         
                         </Form>
                 )
-            }
+            //}
         }
 
 
@@ -105,7 +124,7 @@ class Footer extends React.Component {
                     
                     <h1>Contact</h1>
                     
-                    {messageSuccess(this.state.messageSent)}
+                    {messageSuccess(/*this.state.messageSent*/)}
                 
                 </Container>
 
@@ -161,7 +180,7 @@ class Footer extends React.Component {
                         
                         <h1 style={{paddingTop: "2vh"}}>Contact</h1>
                         
-                    {messageSuccess(this.state.messageSent)}
+                    {messageSuccess(/*this.state.messageSent*/)}
 
                         <h3 style={{
                                 position: "relative", 
@@ -212,4 +231,4 @@ class Footer extends React.Component {
 }
 }
 
-export default Footer;
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

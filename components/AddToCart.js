@@ -4,7 +4,7 @@ import EachLicense from './EachLicense';
 const and = (desc) => {
     if (desc) {
       return (
-          <span  >and {desc}</span>
+          <span>and {desc}</span>
       )
     }
     else {
@@ -130,59 +130,3 @@ const AddToCart = (props) => (
   )
   
   export default AddToCart;
-
-
-
-/*import {Input} from 'semantic-ui-react';
-
-import {addToCart} from '../lib/moltin';
-
-export default class AddToCart extends React.Component {
-    state = {
-        loading: false,
-        quantity: 1
-    }
-
-    _handleChange = ({target: {value}}) => {
-        this.setState({
-            quantity: value
-        })
-    }
-
-    _handleSubmit = async () => {
-        const {productId} = this.props
-        const {quantity} = this.state
-
-        this.setState({
-            loading: true
-        })
-
-        await addToCart(productId, quantity)
-
-        this.setState({
-            loading: false,
-            quantity: 1
-        })
-    }
-
-    render(){
-        const {loading, quantity} = this.state
-
-        return(
-            <Input
-                type='number' 
-                placeholder='Quantity' 
-                value={quantity} 
-                onChange={e => this._handleChange(e)} 
-                action={{
-                    color: 'violet',
-                    content: 'Add To Cart',
-                    icon: 'plus cart',
-                    onClick: this._handleSubmit,
-                    loading,
-                    disabled: loading
-                }} 
-            />
-        )
-    }
-}*/
