@@ -9,3 +9,5 @@ localStorage
 package-lock.json
 
 now.json
+
+next.config.js

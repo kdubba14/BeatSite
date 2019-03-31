@@ -112,14 +112,14 @@ const AddToCart = (props) => (
         
         <div 
             className="close" 
-            onClick={() => {props.adding(props.song, selectLicense(props.select))}} 
+            onClick={() => {props.adding(props.song, selectLicense(props.select), () => props.closePopup(props.cPopup))}} 
             style={{textAlign: "center", 
                     backgroundColor: "rgba(255,180,135,0.5)", 
                     height: "10vh", 
                     width: `${props.width-10}`,   
                     cursor: "pointer"}} >
             
-            <h2 style={{height: "5vh", paddingTop: "2.5vh"}} >Add To Cart</h2>
+            <h2 className="close" style={{height: "5vh", paddingTop: "2.5vh"}} >Add To Cart</h2>
         
         </div>
         

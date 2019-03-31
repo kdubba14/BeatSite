@@ -3,14 +3,18 @@ import {
   removeFromCart, 
   purchaseCart
 } from '../reduxCategories/cart/cartActions';
+import {successPopup, closePopup} from '../reduxCategories/popups/popupActions';
 
 import keys from '../config/keys';
+
 
 const mapStateToProps = (state) => {
   return {
     cart: state.cartReducers.cart, 
     totalPrice: state.cartReducers.totalPrice, 
     loading: state.cartReducers.loading, 
+    popupType: state.popupReducers.popupType, 
+    pop: state.popupReducers.pop, 
     success: state.cartReducers.success
   }
 }
@@ -18,7 +22,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return{
     _purchaseCart: (token) => dispatch(purchaseCart(token)), 
-    _removeItem: (index) => dispatch(removeFromCart(index))
+    _removeItem: (index) => dispatch(removeFromCart(index)), 
+    _successPopup: () => dispatch(successPopup())
   }
 }
 
@@ -65,9 +70,6 @@ class Cart extends React.Component {
   componentWillUnmount() {
       if(this.stripeHandler) {
           this.stripeHandler.close();
-          this.setState({
-            success: true
-          })
       }
   }
 

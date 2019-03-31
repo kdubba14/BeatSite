@@ -47,7 +47,7 @@ export const popupReducers = (state=popupState, action={}) => {
         pop: true
       }
     case CLOSE_POPUP:
-      if (action.payload.class === "close" || action.payload.cart === "addToCart") {
+      if (action.payload === "close") {
       return {
         ...state, 
         pop: false

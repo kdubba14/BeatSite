@@ -56,7 +56,7 @@ const popupType = (props) => {
   if (props.popupType === "addToCart") {
     return (
       <div style={normalScrollStyle}>
-        <AddToCart adding={props.adding} select={props.select} choose={props.choose} song={props.song} width={props.width} />
+        <AddToCart adding={props.adding} select={props.select} choose={props.choose} song={props.song} width={props.width} closePopup={props.closePopup} cPopup={props.cPopup} />
       </div>
     )
   }

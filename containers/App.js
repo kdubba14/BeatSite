@@ -21,6 +21,9 @@ import Popup from '../components/Popup';
 import Licenses from '../components/Licenses';
 import Featured from '../components/Featured';
 
+const cPopup = (
+  <div className="close" />
+)
 
 const mapStateToProps = (state) => {
   
@@ -168,7 +171,8 @@ class App extends React.Component {
                     <Popup 
                         pop={this.props.pop} 
                         popupType={this.props.popupType} 
-                        closePopup={this.props._closePopup}
+                        closePopup={this.props._closePopup} 
+                        cPopup={cPopup}
                         leasePopup={this.props._leasePopup}
                         exclusivePopup={this.props._exclusivePopup}
                         cartPopup={this.props._cartPopup}

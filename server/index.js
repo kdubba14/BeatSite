@@ -140,11 +140,15 @@ app.prepare().then(() => {
           name: "Artist" },
         to: [ { 
           email: keys.swagEmail, 
-          name: 'Trevor' } ] 
+          name: 'Trevor' }  , 
+          {
+            email: keys.adminEmail, 
+            name: "Divici Services"
+          }]
       })
 
       axios.post(url, body, mailOptions)
-        .then(response => res.send("Message sent!" + response))
+        .then(response => console.log("Reminder message sent!"))
         .catch(err => console.log(err.message))
       
       

@@ -4,8 +4,11 @@ import {
   PURCHASE_PENDING, 
   PURCHASE_SUCCESS, 
   PURCHASE_FAILED,
-  CHOOSE_LICENSE
+  CHOOSE_LICENSE, 
+  SUCCESS_POPUP
 } from '../../constants';
+
+import {closePopup} from '../popups/popupActions';
 
 import axios from 'axios'
 
@@ -42,6 +45,9 @@ export const purchaseCart = (token) => (dispatch, state) => {
     .then(data => dispatch({
       type: PURCHASE_SUCCESS, 
       payload: data})
+    )
+    .then(() => dispatch({
+      type: SUCCESS_POPUP})
     )
     .catch(err => dispatch({
       type: PURCHASE_FAILED, 

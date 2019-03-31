@@ -37,6 +37,7 @@ export const cartReducers = (state=initialCartState, action={}) => {
       for(let i = 0;i < newCart.length; i++){
         sum += newCart[i].type.numPrice;
       }
+      
       return {...state, cart: newCart, song: song, totalPrice: sum}
     
     case REMOVE_FROM_CART:

@@ -3,7 +3,7 @@ import {Icon} from 'semantic-ui-react';
 const Success = () => (
 
 
-  <div style={{color: "green"}}>
+  <div className="close" style={{color: "green", width: "60%", margin: "0 auto"}}>
 
     <Icon name="check circle" color="green" size="huge" />
     <h1>Thanks for the purchase!</h1>

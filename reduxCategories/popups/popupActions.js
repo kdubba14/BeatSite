@@ -30,9 +30,6 @@ export const successPopup = () => ({
 
 export const closePopup = (e) => ({
   type: CLOSE_POPUP, 
-  payload: {
-    class: e.target.className, 
-    cart: e
-  }
+  payload: e.target.className
 })
 
