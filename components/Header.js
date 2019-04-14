@@ -64,7 +64,7 @@ const Header = (props) => (
                 <a  
                     className="link" 
                     minWidth={767} 
-                    onClick={props.showPopup} 
+                    onClick={props.cartPopup} 
                     style={{display: "inline-block", 
                         float: "right", 
                         position: "relative", 

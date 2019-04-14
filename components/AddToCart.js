@@ -4,7 +4,7 @@ import EachLicense from './EachLicense';
 const and = (desc) => {
     if (desc) {
       return (
-          <span>and {desc}</span>
+          <span >and {desc}</span>
       )
     }
     else {
@@ -21,7 +21,11 @@ const selectStyle = (select, key) => {
                 height: "10vh", 
                 marginBottom: "2.5vh", 
                 backgroundColor: "rgba(193,225,238,.8)", 
-                cursor: "pointer"
+                cursor: "pointer", 
+                display: "grid", 
+                gridTemplateColumns: "15% 55% 30%", 
+                /*gridTemplateRows: "1fr 1fr", */
+                gridTemplateAreas: '"dot license price" "dot offerings price"'
             }
         );
     }
@@ -30,7 +34,11 @@ const selectStyle = (select, key) => {
             {
                 height: "10vh", 
                 marginBottom: "2.5vh", 
-                cursor: "pointer"
+                cursor: "pointer", 
+                display: "grid", 
+                gridTemplateColumns: "15% 55% 30%", 
+                /*gridTemplateRows: "1fr 1fr", */
+                gridTemplateAreas: '"dot license price" "dot offerings price"'
             }
         )
     }
@@ -41,6 +49,7 @@ const dotStyle = (select, key) => {
     if (select === key) {
         return (
             {
+                gridArea: "dot", 
                 height: "4vh", 
                 width: "4vh", 
                 backgroundColor: "#000", 
@@ -54,6 +63,7 @@ const dotStyle = (select, key) => {
     else {
         return (
             {
+                gridArea: "dot", 
                 height: "4vh", 
                 width: "4vh", 
                 borderRadius: "10em", 
@@ -90,17 +100,17 @@ const AddToCart = (props) => (
         {EachLicense.map((license) => {
 
             return (
-            <div key={license.key} onClick={() => {props.choose(license.selectKey)}} style={selectStyle(props.select, license.selectKey)} >
+            <div className="option" key={license.key} onClick={() => {props.choose(license.selectKey)}} style={selectStyle(props.select, license.selectKey)} >
             
                 <div style={dotStyle(props.select, license.selectKey)} />
 
-                <div style={{width: `${props.width-40}vw`, height: "10vh", float: "left"}}>
-                    <h4 style={{float: "left", textAlign: "left", display: "block", margin: "0", width: "100%", height: "3.5vh", marginTop: "2vh"}}>{license.name}</h4>
+                <div style={{width: "100%", height: "10vh", float: "left"}}>
+                    <h4 style={{gridArea: "license", textAlign: "left",  margin: "0", width: "100%", height: "3.5vh", marginTop: "2vh"}}>{license.name}</h4>
 
-                    <h5 style={{float: "left", textAlign: "left", display: "block", margin: "0", width: "100%", height: "3vh", color: "#444"}}>-{license.desc} {and(license.plus)}-</h5>
+                    <h5 style={{gridArea: "offerings",  textAlign: "left", margin: "0", width: "100%", height: "3vh", color: "#444"}}>-{license.desc} {and(license.plus)}-</h5>
                 </div>
 
-                <div style={{width: `${props.width/5}vw`, height: "5vh", marginTop: "2.5vh", float: "right", textAlign: "left"}}>
+                <div style={{gridArea: "price", width: `${props.width/5}vw`, height: "5vh", marginTop: "2.5vh", float: "right", textAlign: "left"}}>
                     <h2>{license.price}</h2>
                 </div>
             

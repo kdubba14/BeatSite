@@ -18,7 +18,7 @@ const Featured = (props) => (
             <h2>
                 {props.song.title} | 135 BPM | 
                 <a  onClick={() => (props.addToCartPopup(props.song))} style={{cursor: "pointer", color: "black"}} >  
-                    <strong  style={{fontColor: "black", textDecoration: "underline"}}>Add To Cart</strong>
+                    <strong  style={{fontColor: "black", fontSize: "1.7rem",  textDecoration: "underline"}}>Add To Cart</strong>
                 </a>  
             </h2>
 

@@ -67,7 +67,7 @@ const Licenses = (props) => (
               return (
                 <React.Fragment key={license.key}>
                 <div>{license.divider}</div>
-                <Card raised centered style={{height: "50vh", boxShadow: "0.5vw .5vw 1em -.5em #444"}} >
+                <Card raised centered style={{height: "60vh", boxShadow: "0.5vw .5vw 1em -.5em #444"}} >
                     <Card.Content>
                         <Card.Header>{license.name}</Card.Header>
                         <Divider hidden />

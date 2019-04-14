@@ -34,35 +34,35 @@ const popupType = (props) => {
 
   if (props.popupType === "lease") {
     return (
-      <div style={normalScrollStyle}>
+      <div className="popup" /*style={normalScrollStyle}*/>
         <Lease date={props.date} />
       </div>
     )
   }
   if (props.popupType === "exclusive") {
     return (
-      <div style={normalScrollStyle}>
+      <div className="popup" /*style={normalScrollStyle}*/>
         <Exclusive date={props.date} />
       </div>
     )
   }
   if (props.popupType === "cart") {
     return (
-      <div style={cartScrollStyle}>
+      <div className="cart popup" /*style={cartScrollStyle}*/>
         <Cart cart={props.cart} totalPrice={props.totalPrice} removeItem={props.removeItem} width={props.width} purchase={props.purchase} success={props.success} />
       </div>
     )
   }
   if (props.popupType === "addToCart") {
     return (
-      <div style={normalScrollStyle}>
+      <div className="popup" /*style={normalScrollStyle}*/>
         <AddToCart adding={props.adding} select={props.select} choose={props.choose} song={props.song} width={props.width} closePopup={props.closePopup} cPopup={props.cPopup} />
       </div>
     )
   }
   if (props.popupType === "success") {
     return (
-      <Success />
+      <Success className="popup" />
     )
   }
 
