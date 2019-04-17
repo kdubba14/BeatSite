@@ -3,14 +3,6 @@ import Header from './Header';
 import Head from 'next/head';
 
 
-const foot = (noFoot) => {
-    if (noFoot) {
-        return 
-    }
-    else {
-        return <Footer />
-    }
-}
 
 const Layout = (props) => (
     <div style={{position: "absolute", top: "0", height: "100%", width: "100%"}}>
@@ -19,19 +11,15 @@ const Layout = (props) => (
             <meta charSet="utf-8" />
             <link rel="stylesheet" href="../static/swag.css" />
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"/>
-
             <title>Swaghetti Beats</title>
-            
         </Head>
+        
         <Header className="header" homeView={props.homeView} beatsView={props.beatsView} cart={props.cart} showCart={props.showCart} cartPopup={props.cartPopup} />
         
             {props.children}
         
-        {foot(props.noFoot)}
-        
-        
+        <Footer />
     </div>
 )
-
 
 export default Layout;

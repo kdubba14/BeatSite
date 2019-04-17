@@ -7,13 +7,6 @@ import {
   CHOOSE_LICENSE
 } from '../../constants';
 
-import BeatList from '../../components/BeatList';
-
-const initialBeat = BeatList.filter((beat) => {
-  return(
-      beat.featured
-  )
-})
 
 const initialCartState = {
   cart: [], 
@@ -21,7 +14,7 @@ const initialCartState = {
   loading: false, 
   success: false, 
   select: "wav", 
-  song: initialBeat[0]
+  song: {}
 }
 
 

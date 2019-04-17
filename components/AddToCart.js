@@ -15,65 +15,21 @@ const and = (desc) => {
 const selectStyle = (select, key) => {
     if (select === key) {
         return (
-            {
-                borderTop: "0.1vh solid black", 
-                borderBottom: "0.1vh solid black", 
-                height: "10vh", 
-                marginBottom: "2.5vh", 
-                backgroundColor: "rgba(193,225,238,.8)", 
-                cursor: "pointer", 
-                display: "grid", 
-                gridTemplateColumns: "15% 55% 30%", 
-                /*gridTemplateRows: "1fr 1fr", */
-                gridTemplateAreas: '"dot license price" "dot offerings price"'
-            }
+            "atc-option-select"
         );
-    }
-    else {
-        return (
-            {
-                height: "10vh", 
-                marginBottom: "2.5vh", 
-                cursor: "pointer", 
-                display: "grid", 
-                gridTemplateColumns: "15% 55% 30%", 
-                /*gridTemplateRows: "1fr 1fr", */
-                gridTemplateAreas: '"dot license price" "dot offerings price"'
-            }
-        )
+    }else{
+        return ""
     }
 }
 
 const dotStyle = (select, key) => {
-
     if (select === key) {
         return (
-            {
-                gridArea: "dot", 
-                height: "4vh", 
-                width: "4vh", 
-                backgroundColor: "#000", 
-                borderRadius: "10em", 
-                border: ".1vh solid black", 
-                float: "left", 
-                margin: "3vh 2.5vw 0 2.5vw"
-            }
+            "atc-option-dot-select"
         )
+    }else{
+        return ""
     }
-    else {
-        return (
-            {
-                gridArea: "dot", 
-                height: "4vh", 
-                width: "4vh", 
-                borderRadius: "10em", 
-                border: ".1vh solid black", 
-                float: "left", 
-                margin: "3vh 2.5vw 0 2.5vw"
-            }
-        )
-    }
-
 }
 
 const selectLicense = (key) => {
@@ -92,25 +48,37 @@ const AddToCart = (props) => (
 
     <React.Fragment>
   
-        <div style={{textAlign: "center", height: "10vh", marginBottom: "2.5vh"}}>
-            <h2 style={{padding: "0", height: "5vh", paddingTop: "2.5vh"}}>{props.song.title}</h2>
+        <div id="atc-title-box">
+            <h2 id="atc-title">
+                {props.song.title}
+            </h2>
         </div>
 
 
         {EachLicense.map((license) => {
 
             return (
-            <div className="option" key={license.key} onClick={() => {props.choose(license.selectKey)}} style={selectStyle(props.select, license.selectKey)} >
+            <div 
+                className={`atc-option ${selectStyle(props.select, license.selectKey)}`} 
+                key={license.key} 
+                onClick={() => {props.choose(license.selectKey)}}>
             
-                <div style={dotStyle(props.select, license.selectKey)} />
+                <div className={`atc-option-dot ${dotStyle(props.select, license.selectKey)}`} />
 
-                <div style={{width: "100%", height: "10vh", float: "left"}}>
-                    <h4 style={{gridArea: "license", textAlign: "left",  margin: "0", width: "100%", height: "3.5vh", marginTop: "2vh"}}>{license.name}</h4>
-
-                    <h5 style={{gridArea: "offerings",  textAlign: "left", margin: "0", width: "100%", height: "3vh", color: "#444"}}>-{license.desc} {and(license.plus)}-</h5>
+                <div className="atc-option-license-box">
+                    <div className="atc-option-license-name">  
+                        <h4>    
+                        {license.name}
+                        </h4>
+                    </div>
+                    <div className="atc-option-offerings">
+                        <h5>
+                            -{license.desc} {and(license.plus)}-
+                        </h5>
+                    </div>
                 </div>
 
-                <div style={{gridArea: "price", width: `${props.width/5}vw`, height: "5vh", marginTop: "2.5vh", float: "right", textAlign: "left"}}>
+                <div className="atc-option-price">
                     <h2>{license.price}</h2>
                 </div>
             

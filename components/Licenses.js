@@ -3,23 +3,17 @@ import { Container, Card, Divider } from 'semantic-ui-react';
 import EachLicense from './EachLicense';
 
 
-const buttonStyle = {
-  margin: "1.5em 0", 
-  backgroundColor: "rgba(255,180,135,0.5) ",
-  color: "black", 
-  border: "none", 
-  padding: "1.5vh 4vw", 
-  borderRadius: ".3em"
-}
-
-
 
 const plus = (license) => {
   if (license) {
     return (
       <React.Fragment>
-        <Card.Description style={{marginTop: "0vh"}}>&</Card.Description>
-        <Card.Meta style={{marginBottom: "0vh"}}>{license}</Card.Meta>
+        <Card.Description style={{marginTop: "0vh"}}>
+          &
+        </Card.Description>
+        <Card.Meta style={{marginBottom: "0vh"}}>
+          {license}
+        </Card.Meta>
       </React.Fragment>
     )
   }
@@ -29,25 +23,16 @@ const licenseType = (props, type) => {
 
     if (type === "exclusive") {
       return (
-        <button 
-          name="exclusive" 
-          onClick={props.exclusivePopup}  
-          style={buttonStyle} >
-            
+        <button name="exclusive" onClick={props.exclusivePopup}  className="licenses-card-button">  
             <strong>Read Full License</strong>
-        
         </button>
       )
     }
     else {
       return (
-        <button 
-          name="lease" 
-          onClick={props.leasePopup} 
-          style={buttonStyle} >
-            
+        <button name="lease" onClick={props.leasePopup} 
+          className="licenses-card-button"> 
             <strong>Read Full License</strong>
-        
         </button>
       )
     }
@@ -56,47 +41,54 @@ const licenseType = (props, type) => {
 
 const Licenses = (props) => (
 
-
-  <div id={props.license} >
+  <div className="licenses" >
     
-      <Container style={{padding: props.width}}>
-          <Card.Group centered stackable itemsPerRow={props.row} style={{marginTop: props.topmarg}} >
+      <div className="licenses-container">
+          <Card.Group centered stackable itemsPerRow="3" className="licenses-card-group" >
               
             {EachLicense.map((license) => {
-
               return (
-                <React.Fragment key={license.key}>
-                <div>{license.divider}</div>
-                <Card raised centered style={{height: "60vh", boxShadow: "0.5vw .5vw 1em -.5em #444"}} >
-                    <Card.Content>
-                        <Card.Header>{license.name}</Card.Header>
-                        <Divider hidden />
-                        <Card.Header style={{fontSize: "2.5em"}}>{license.price}</Card.Header>
-                        <Divider hidden />
-                        <Card.Description>
-                            <strong>Per Beat</strong>
-                        </Card.Description>
-                        <br />
-                        <Card.Meta >{license.desc}</Card.Meta>
-                        {plus(license.plus)}
-                    </Card.Content>
-                    <Divider hidden />
-                    <Card.Content style={{height: "25%"}} >
-                        
-                    {licenseType(props, license.type)}
-
-                    </Card.Content>
-                </Card>
-                </React.Fragment>
+                <div key={license.key} className="licenses-card-box">
+                  <Card raised centered className="licenses-card" >
+                      <Card.Content>
+                          
+                          <Card.Header>
+                            {license.name}
+                          </Card.Header>
+                          
+                          <Divider hidden />
+                          
+                          <Card.Header className="licenses-card-price">
+                            {license.price}
+                          </Card.Header>
+                          
+                          <Divider hidden />
+                          
+                          <Card.Description>
+                              <strong>
+                                Per Beat
+                              </strong>
+                          </Card.Description>
+                          
+                          <br />
+                          
+                          <Card.Meta>
+                            {license.desc}
+                          </Card.Meta>
+                          {plus(license.plus)}
+                      
+                      </Card.Content>
+                      <Divider hidden />
+                      
+                      <Card.Content style={{height: "25%", display: "flex"}} >
+                        {licenseType(props, license.type)}
+                      </Card.Content>
+                  </Card>
+                </div>
               )
-
-            })}  
-              
-
-              
-              
+            })}   
           </Card.Group>
-      </Container>
+      </div>
       
   </div>
 

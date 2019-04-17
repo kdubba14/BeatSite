@@ -7,22 +7,26 @@ const BeatContent = (props) => (
     <List divided relaxed>
 
         {BeatList.map( (song) => {
-            return (<List.Item style={{padding: "2vh 0"}}>
-                        <List.Content floated="left" verticalAlign="middle" style={{paddingTop: "1vh"}}>
+            return (<div className="beats-card-item">
+                        
+                        <List.Content style={{paddingTop: "1vh"}}>
                             <MusicPicker playSong={props.playSong} song={song}>
                                 <Icon name="play circle" size="big" color="black" />
                             </MusicPicker>
                         </List.Content>
-                        <List.Content floated="left" style={{fontSize: "1.25em", paddingTop: "1.5vh"}}>
-                            <strong>{song.title}</strong>
+
+                        <List.Content style={{fontSize: "1.25em", paddingTop: "1.5vh"}}>
+                            <strong style={{paddingLeft: "2.5%"}}>{song.title}</strong>
                         </List.Content>
-                        <List.Content floated="right" verticalAlign="middle">
-                            <Button  onClick={() => {props.addToCart(song)}} color="black">
+
+                        <List.Content verticalAlign="middle">
+                            <Button  onClick={() => {props.addToCartPopup(song)}} color="black" size="small" style={{margin: "0"}}>
                                 <Icon callName="addToCart"name="cart" size="medium" />
                                 Add
                             </Button>
                         </List.Content>
-                    </List.Item>)
+
+                    </div>)
         })}
 
     </List>

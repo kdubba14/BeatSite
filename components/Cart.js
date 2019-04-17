@@ -92,85 +92,54 @@ class Cart extends React.Component {
   <React.Fragment>
 
 
-      <h2 style={{textAlign: "center", height: "5vh"}}>Cart</h2>
+      <h2 id="cart-content-header">Cart</h2>
 
-      <div style={{height: "35vh", width: `${this.props.width-10}vw`, overflow: "scroll"}}>
+      <div id="cart-content-list">
       
           {this.props.cart.map((item, index) => {
             return(
               
-                <div key={index} style={{display: "block", width: "100%", height: "3vh", marginBottom: "4.5vh"}}>
-                  <div style={{display: "block"}}>
-                    
-                    <span style={{float: "left"}}>
+              <div key={index} className="cart-content-list-item">
+                <div className="cart-content-list-grid">
+                  
+                  <span style={{gridArea: "title", borderBottom: ".01em solid #eee"}}>
+                    <h3>
+                      {item.song.title}
+                    </h3>
+                  </span>
+
+                  <span style={{gridArea: "price"}}>
                       <h3>
-                        {item.song.title}
+                        {item.type.price}.00
                       </h3>
-                    </span>
-                    
-                    <span 
-                        onClick={() => {this.props._removeItem(index)}} 
-                        style={{
-                            float: "right", 
-                            height: "100%", 
-                            width: `${this.props.width/20}vw`, 
-                            marginLeft: `${10-(this.props.width/20)}vw`, 
-                            border: ".3vh solid rgba(204, 78, 0, 0.5)", 
-                            cursor: "pointer", 
-                            backgroundColor: "rgba(255,180,135,0.5)", 
-                            color: "rgba(204, 78, 0, 0.5)"}}>
-                      X
-                    </span>
-
-                    <span style={{float: "right"}}>
-                        <h3>
-                          {item.type.price}.00
-                        </h3>
-                    </span>
-                    
-                  </div>
-
+                  </span>
+                  
+                  <span 
+                      onClick={() => {this.props._removeItem(index)}} 
+                      className="cart-content-item-remove">
+                    <span style={{margin: "auto"}}>X</span>
+                  </span>
                 </div>
-              
+              </div>
             )
           })}
-
       </div>
 
-      <div style={{width: `${this.props.width-10}`, paddingRight: "10vw", height: "5vh", display: "block", borderTop: ".2vh solid black"}}>
-      
-          <span style={{float: "left"}}>
-            <h3>Total:</h3>
-          </span>
-
-          <span style={{float: "right"}}>
-            <h3>
-              {`${this.props.totalPrice}.00`}
-            </h3>
-          </span>
-      
+      <div id="cart-content-totals">
+        <span>
+          <h3>Total:</h3>
+        </span>
+        <span>
+          <h3>
+            {`$${this.props.totalPrice}.00`}
+          </h3>
+        </span>
       </div>
 
-      <div style={{width: `${this.props.width-10}`, height: "10vh", textAlign: "center"}}>
-          
-      
-      
-      <button 
-          onClick={this.onStripeUpdate}
-          style={{
-            height: "5vh", 
-            width: "30vw", 
-            marginTop: "5vh", 
-            color: "#004", 
-            backgroundColor: "rgba(193,225,238,.8)", 
-            border: ".3vh solid rgb(49, 143, 180)"}}>
-        
-        <h3>Pay ${this.props.totalPrice}.00</h3>
-      
-      </button>
-      
-      
-
+      <div id="cart-button-area" style={{width: `${this.props.width-10}`, height: "10vh", textAlign: "center"}}>
+        <button onClick={this.onStripeUpdate} id="cart-buy-button">
+          <h3>Pay ${this.props.totalPrice}.00</h3>
+        </button>
       </div>
 
   </React.Fragment>

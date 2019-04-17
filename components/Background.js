@@ -2,7 +2,7 @@
 
 const Background = (props) => (
 
-  <div style={{marginTop: `${100-Number(props.height)}vh`, position: "static", zIndex: "-1"}}>
+  <div id="home-background" style={{marginTop: `${100-Number(props.height)}vh`, position: "static", zIndex: "-1"}}>
 
       <div style={{
           position: "relative", 
@@ -22,9 +22,7 @@ const Background = (props) => (
           bottom: "0", 
           left: "0", 
           right: "0", 
-          backgroundColor: "rgba(255,255,255,0.45)" }}/>
-
-                            
+          backgroundColor: "rgba(255,255,255,0.45)" }}/>                         
 
   </div>
 

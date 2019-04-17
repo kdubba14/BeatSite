@@ -27,49 +27,17 @@ class Footer extends React.Component {
     
     constructor(props){
         super(props);
-        /*this.state={
-            name: "", 
-            email: "", 
-            subject: "", 
-            message: "", 
-            messageSent: false
-        }*/
+        
     }
-
-    
-    
-    _handleTyping = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-
-    };
-
-    _handleSubmit = (e) => {
-        e.preventDefault()
-
-        const {name, email, subject, message} = this.state;
-
-        axios.post('/api/mailer', {
-            name, 
-            email, 
-            subject, 
-            message
-        })
-        
-
-        this.setState({
-            messageSent: true
-        })
-        
-    };
-
 
     render() {
     
 
-        const messageSuccess = (sent) => {
-            /*if (sent){
+        const messageSuccess = () => {
+            if (this.props.sending) {
+                return <img src='../static/loader.svg' style={{paddingTop: "20vh"}} />
+            }
+            if (this.props.sent){
                 return(
                     <Message success floating style={{padding: "17.5vh 0"}}>
                         <Message.Header>
@@ -79,8 +47,7 @@ class Footer extends React.Component {
                         </Message.Header>
                     </Message>
                 )
-            }
-            else{*/
+            }else{
                 return(
                     <Form >
                             
@@ -102,7 +69,7 @@ class Footer extends React.Component {
                         
                         </Form>
                 )
-            //}
+            }
         }
 
 
@@ -208,6 +175,7 @@ class Footer extends React.Component {
                                 right: "0vw", 
                                 top: "15vh", 
                                 fontWeight: "-1em", 
+                                fontSize: ".9rem", 
                                 paddingTop: "1vh",  
                                 color: "gray"}}>
                                 

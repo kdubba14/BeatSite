@@ -48,7 +48,9 @@ const mapStateToProps = (state) => {
     
     popupType: state.popupReducers.popupType, 
     
-    song: state.cartReducers.song, 
+    song: state.popupReducers.song, 
+
+    featuredSong: state.popupReducers.featuredSong,
     
     select: state.cartReducers.select
   }
@@ -72,7 +74,7 @@ const mapDispatchToProps = (dispatch) => {
     
     _cartPopup: () => dispatch(cartPopup()), 
     
-    _addToCartPopup: () => dispatch(addToCartPopup()), 
+    _addToCartPopup: (song) => dispatch(addToCartPopup(song)), 
     
     _chooseLicense: (key) => dispatch(chooseLicense(key)), 
     
@@ -133,7 +135,7 @@ class App extends React.Component {
                       state={this.state} 
                       playSong={this.props._handlePlaySong} 
                       version="mobile" 
-                      addToCart={this.props._addToCart} 
+                      addToCartPopup={this.props._addToCartPopup} 
                     /> 
                 )
             }else{
@@ -146,7 +148,7 @@ class App extends React.Component {
                           beatsView={this._beatsView} 
                           addToCart={this.props._addToCart} 
                           addToCartPopup={this.props._addToCartPopup} 
-                          song={this.props.song} 
+                          song={this.props.featuredSong} 
                           height={height} 
                           padding={100-height} 
                         />
@@ -198,13 +200,13 @@ class App extends React.Component {
                             width="0"  
                             topmarg="22.5vh" />
 
-                    <Licenses 
+                    {/*<Licenses 
                         license="mobile-licenses"
                             leasePopup={this.props._leasePopup} 
                             exclusivePopup={this.props._exclusivePopup} 
                             row="1" 
                             width="0 10vw" 
-                            topmarg="5vh" /> 
+                    topmarg="5vh" /> */}
                         
                 </div>
 

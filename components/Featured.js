@@ -8,11 +8,13 @@ const Featured = (props) => (
 
         <div style={{position: "relative", zIndex: "7"}}>
         
-            <h1 style={{fontSize: "3em", marginTop: "10vh"}}>Featured</h1>
+            <h1 style={{fontSize: "3em", marginTop: "10vh"}}>
+                Featured
+            </h1>
 
             <a onClick={() => props.playFeatured()}
                 style={{color: "#000", cursor: "pointer"}}>
-            <Icon name="play circle" size="massive" />
+                <Icon name="play circle" size="massive" />
             </a>
 
             <h2>

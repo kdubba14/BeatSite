@@ -1,6 +1,6 @@
 import BeatContent from './BeatContent';
 
-const webVersion = {
+/*const webVersion = {
     position: "relative", 
     width: "60vh", 
     height: "90vh", 
@@ -26,14 +26,14 @@ const mobileVersion = {
     boxShadow: "0px 6px 10px #555", 
     overflow: "scroll", 
     backgroundColor: "rgba(128,128,150,0.5)"
-}
+}*/
 
 const whichVersion = (version) => {
     if (version === "web") {
-        return webVersion
+        return "beats-card-web"
     }
     else {
-        return mobileVersion
+        return "beats-card-mobile"
     }
 }
 
@@ -43,9 +43,9 @@ const BeatsBackground = (props) => (
 
         
 
-            <div style={whichVersion(props.version)}>
+            <div id={whichVersion(props.version)}>
 
-                <BeatContent playSong={props.playSong} addToCart={props.addToCart} />
+                <BeatContent playSong={props.playSong} addToCartPopup={props.addToCartPopup} />
 
             </div>
 

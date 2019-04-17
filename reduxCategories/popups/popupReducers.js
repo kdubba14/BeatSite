@@ -7,10 +7,20 @@ import {
   CLOSE_POPUP
 } from '../../constants';
 
+import BeatList from '../../components/BeatList';
+
+const initialBeat = BeatList.filter((beat) => {
+  return(
+      beat.featured
+  )
+})
+
 
 const popupState = {
   popupType: "lease", 
-  pop: false
+  pop: false, 
+  song: initialBeat[0], 
+  featuredSong: initialBeat[0]
 }
 
 export const popupReducers = (state=popupState, action={}) => {
