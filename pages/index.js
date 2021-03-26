@@ -24,6 +24,7 @@ const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger))
 
 
 export default class index extends React.Component {
+    console.log('-')
     render(){return(
         <Provider store={store}>
             <App />
